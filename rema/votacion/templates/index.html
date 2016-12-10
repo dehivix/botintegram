@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load staticfiles %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="theme-color" content="#2196F3">
+    <title>REMA</title>
+    <!-- CSS  -->
+    <link href="{% static 'materialize/min/plugin-min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'materialize/min/custom-min.css' %}" type="text/css" rel="stylesheet" >
+    
+</head>
+<body id="top" class="scrollspy">
+
+<!-- Pre Loader -->
+<div id="loader-wrapper">
+    <div id="loader"></div>
+ 
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+ 
+</div>
+
+
+    {%if  ya_voto%}
+        <div class="section scrollspy" id="work">
+            <div class="container">
+                <h1 class="header text_b center">YA SE HAN REGISTRADO</h1>
+                <h4 class="header text_b center">TODOS SUS VOTOS PARA ESTE PERIODO </h4>
+            </div>
+        </div>
+    {%else%}
+
+
+        <!--Work-->
+        <div class="section scrollspy" id="work">
+                <h2 class="header text_b center"> {{candidatos.0.cargos}} </h1>
+                <div class="row">
+                    {% for i in candidatos %}
+                    <div class="col s12 m4 l4">
+                        <div class="card medium">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="{% static i.foto %} ">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4 center">{{i.persona.primer_nombre}} {{i.persona.primer_apellido}}</span>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">{{i.persona.primer_nombre}} {{i.persona.primer_apellido}} <i class="mdi-navigation-close right"></i></span>
+                                <p>{{i.descripcion}}</p>
+                                <button class="btn-large waves-effect waves-light" type="submit" name="action">VOTAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>   
+                    {% endfor %}
+                </div>
+        </div>
+    {%endif%}
+
+
+<!--Hero-->
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+        <h1 class="text_h center header cd-headline letters type">
+            <span>Ama a Dios</span> 
+            <span class="cd-words-wrapper waiting">
+                <b class="is-visible">con todo tu corazón</b>
+                <b>con todas tus fuerzas</b>
+                <b>con toda tu alma</b>
+            </span>
+        </h1>
+    </div>
+</div>
+
+<!--Footer-->
+<footer id="contact" class="page-footer default_color scrollspy">
+    <div class="footer-copyright default_color">
+        <div class="container">
+           REMA registro electoral ministerial automatizado, creado por: <a class="white-text" href="http://github.com/dehivix">Dehivis Pérez</a>
+        </div>
+    </div>
+
+</footer>
+<!--  Scripts-->
+    <script src="{% static 'materialize/min/plugin-min.js' %}"></script>
+    <script src="{% static 'materialize/min/custom-min.js' %}"></script>
+    </body>
+</html>
